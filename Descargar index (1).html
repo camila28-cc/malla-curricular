@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Malla Curricular Interactiva - Profesorado de Educación Primaria</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        #mynetwork {
+            width: 100%;
+            height: 95vh;
+            border: 1px solid lightgray;
+        }
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>Malla Curricular Interactiva - Profesorado de Educación Primaria</h2>
+<div id="mynetwork"></div>
+<script type="text/javascript">
+    var nodes = new vis.DataSet([
+        { id: 1, label: "Filosofía", group: "1Año" },
+        { id: 2, label: "Las TIC y la Enseñanza", group: "1Año" },
+        { id: 3, label: "Cs. Sociales en la EP", group: "1Año" },
+        { id: 4, label: "Alfabetización Académica", group: "1Año" },
+        { id: 5, label: "Pedagogía", group: "1Año" },
+        { id: 6, label: "Práctica I", group: "1Año" },
+        { id: 7, label: "Psicología Educacional", group: "1Año" },
+        { id: 8, label: "EDI: Epistemología", group: "1Año" },
+        { id: 9, label: "Cs. Naturales en la EP", group: "1Año" },
+        { id: 10, label: "Matemática en la EP", group: "1Año" },
+
+        { id: 11, label: "Sujetos de la EP", group: "2Año" },
+        { id: 12, label: "Didáctica General", group: "2Año" },
+        { id: 13, label: "Lengua y su Didáctica I", group: "2Año" },
+        { id: 14, label: "Matemática y su Didáctica I", group: "2Año" },
+        { id: 15, label: "Cs. Sociales y su Didáctica I", group: "2Año" },
+        { id: 16, label: "Cs. Naturales y su Didáctica I", group: "2Año" },
+        { id: 17, label: "Práctica II", group: "2Año" },
+        { id: 18, label: "Sociología de la Educación", group: "2Año" },
+
+        { id: 19, label: "Alfabetización Inicial", group: "3Año" },
+        { id: 20, label: "ESI y Salud", group: "3Año" },
+        { id: 21, label: "Lengua y su Didáctica II", group: "3Año" },
+        { id: 22, label: "Matemática y su Didáctica II", group: "3Año" },
+        { id: 23, label: "Cs. Sociales y su Didáctica II", group: "3Año" },
+        { id: 24, label: "Cs. Naturales y su Didáctica II", group: "3Año" },
+        { id: 25, label: "Práctica III", group: "3Año" },
+        { id: 26, label: "Formación Ética y su Didáctica", group: "3Año" },
+        { id: 27, label: "TIC y Diseño de Materiales", group: "3Año" },
+
+        { id: 28, label: "Historia Arg y Lat", group: "4Año" },
+        { id: 29, label: "Arte y Culturas Contemp.", group: "4Año" },
+        { id: 30, label: "EDI (3)", group: "4Año" },
+        { id: 31, label: "Problemáticas Contemp.", group: "4Año" },
+        { id: 32, label: "Residencia Pedagógica", group: "4Año" },
+        { id: 33, label: "Historia y Política Educ. Arg.", group: "4Año" },
+        { id: 34, label: "EDI (2)", group: "4Año" },
+        { id: 35, label: "Integración Escolar", group: "4Año" },
+    ]);
+
+    var edges = new vis.DataSet([
+        { from: 5, to: 12 },
+        { from: 5, to: 6 },
+        { from: 6, to: 17 },
+        { from: 17, to: 25 },
+        { from: 25, to: 32 },
+        { from: 10, to: 14 },
+        { from: 14, to: 22 },
+        { from: 3, to: 15 },
+        { from: 15, to: 23 },
+        { from: 9, to: 16 },
+        { from: 16, to: 24 },
+        { from: 13, to: 21 },
+    ]);
+
+    var container = document.getElementById('mynetwork');
+    var data = { nodes: nodes, edges: edges };
+    var options = {
+        groups: {
+            "1Año": { color: { background: "#AED6F1" }, borderWidth: 1 },
+            "2Año": { color: { background: "#A9DFBF" }, borderWidth: 1 },
+            "3Año": { color: { background: "#F9E79F" }, borderWidth: 1 },
+            "4Año": { color: { background: "#F5B7B1" }, borderWidth: 1 },
+        },
+        physics: { stabilization: false },
+        nodes: { shape: "box" },
+    };
+    var network = new vis.Network(container, data, options);
+</script>
+</body>
+</html>
